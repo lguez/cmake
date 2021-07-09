@@ -1,6 +1,9 @@
 if (NOT TARGET NetCDF_Fortran::NetCDF_Fortran)
   find_package(PkgConfig REQUIRED)
-  pkg_check_modules(NetCDF_Fortran REQUIRED IMPORTED_TARGET netcdf-fortran)
+
+  pkg_check_modules(NetCDF_Fortran REQUIRED IMPORTED_TARGET GLOBAL
+    netcdf-fortran)
+
   pkg_get_variable(netcdf_fortran_pcfiledir netcdf-fortran pcfiledir)
   message(STATUS "${CMAKE_CURRENT_LIST_FILE}")
   message(STATUS "-- Location of .pc file: ${netcdf_fortran_pcfiledir}")
