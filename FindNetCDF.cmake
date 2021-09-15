@@ -15,6 +15,8 @@ Provides the following variables:
 * `NetCDF_HAS_PARALLEL`: Whether or not NetCDF was found with parallel IO support.
 #]==]
 
+list(APPEND CMAKE_MESSAGE_CONTEXT FindNetCDF)
+
 function(FindNetCDF_get_is_parallel_aware include_dir)
   file(STRINGS "${include_dir}/netcdf_meta.h" _netcdf_lines
     REGEX "#define[ \t]+NC_HAS_PARALLEL[ \t]")
@@ -66,10 +68,9 @@ else()
     if (_NetCDF_FOUND)
       unset(netCDF_DIR CACHE)
       pkg_get_variable(netcdf_pcfiledir netcdf pcfiledir)
-      message(STATUS "${CMAKE_CURRENT_LIST_FILE}")
-      message(STATUS "-- Location of .pc file: ${netcdf_pcfiledir}")
-      message(STATUS "-- NetCDF include directories: ${_NetCDF_INCLUDE_DIRS}")
-      message(STATUS "-- NetCDF libraries: ${_NetCDF_LINK_LIBRARIES}")
+      message(STATUS "Location of .pc file: ${netcdf_pcfiledir}")
+      message(STATUS "NetCDF include directories: ${_NetCDF_INCLUDE_DIRS}")
+      message(STATUS "NetCDF libraries: ${_NetCDF_LINK_LIBRARIES}")
       # Forward the variables in a consistent way.
       set(NetCDF_FOUND "${_NetCDF_FOUND}")
       set(NetCDF_INCLUDE_DIRS "${_NetCDF_INCLUDE_DIRS}")
@@ -148,3 +149,5 @@ else()
     endif ()
   endif()
 endif ()
+
+list(POP_BACK CMAKE_MESSAGE_CONTEXT)
