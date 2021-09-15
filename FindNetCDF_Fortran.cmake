@@ -7,12 +7,12 @@ if (NOT TARGET NetCDF_Fortran::NetCDF_Fortran)
     netcdf-fortran)
 
   pkg_get_variable(netcdf_fortran_pcfiledir netcdf-fortran pcfiledir)
-  message(STATUS "Location of .pc file: ${netcdf_fortran_pcfiledir}")
+  message(VERBOSE "Location of .pc file: ${netcdf_fortran_pcfiledir}")
 
-  message(STATUS
+  message(VERBOSE
     "NetCDF-Fortran include directories: ${NetCDF_Fortran_INCLUDE_DIRS}")
 
-  message(STATUS "NetCDF-Fortran libraries: ${NetCDF_Fortran_LINK_LIBRARIES}")
+  message(VERBOSE "NetCDF-Fortran libraries: ${NetCDF_Fortran_LINK_LIBRARIES}")
 
   if(PKG_CONFIG_VERSION_STRING VERSION_LESS "0.29.2"
       OR PKG_CONFIG_VERSION_STRING VERSION_GREATER "1.1")
@@ -27,7 +27,7 @@ if (NOT TARGET NetCDF_Fortran::NetCDF_Fortran)
     target_include_directories(PkgConfig::NetCDF_Fortran INTERFACE
       ${pkg_netcdf_fortran_includedir})
 
-    message(STATUS
+    message(VERBOSE
       "pkg_netcdf_fortran_includedir: ${pkg_netcdf_fortran_includedir}")
   endif()
 
