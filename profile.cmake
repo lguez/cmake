@@ -1,0 +1,2 @@
+set(CMAKE_Fortran_FLAGS_PROFILE_INIT "-p -g -O2")
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE_INIT "-p -g -O2")
