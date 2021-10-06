@@ -18,3 +18,6 @@ set(CMAKE_Fortran_FLAGS_DEBUG_INIT
 string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT
   " -fcheck=bounds,do,mem,pointer,recursion -finit-derived -finit-real=snan "
   "-O0")
+
+set(CMAKE_Fortran_FLAGS_PROFILE_INIT "-p -g -O2")
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE_INIT "-p -g -O2")

@@ -32,3 +32,6 @@ string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT " -fp-stack-check -fpe-all=0")
 # Debug:
 string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT
   " -debug full -debug-parameters all -ftrapuv")
+
+set(CMAKE_Fortran_FLAGS_PROFILE_INIT "-p -g -O2")
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE_INIT "-p -g -O2")
