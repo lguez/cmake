@@ -1,6 +1,8 @@
 list(APPEND CMAKE_MESSAGE_CONTEXT FindNetCDF_Fortran)
 
-if (NOT TARGET NetCDF_Fortran::netcdff)
+if(TARGET NetCDF_Fortran::netcdff)
+  set(NetCDF_Fortran_FOUND True)
+else()
   # Find NetCDF dependency: 
   unset(extraArgs)
 
@@ -48,6 +50,9 @@ if (NOT TARGET NetCDF_Fortran::netcdff)
 
     target_link_libraries(PkgConfig::netcdff INTERFACE NetCDF::NetCDF)
     add_library(NetCDF_Fortran::netcdff ALIAS PkgConfig::netcdff)
+    set(NetCDF_Fortran_FOUND True)
+  else()
+    set(NetCDF_Fortran_FOUND False)
   endif()
 endif()
 
