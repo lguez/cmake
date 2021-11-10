@@ -14,10 +14,10 @@ else()
     list(APPEND extraArgs REQUIRED)
   endif()
   
-  find_package(NetCDF ${extraArgs})
+  find_package(netCDF ${extraArgs})
   #-
 
-  if(NetCDF_FOUND)
+  if(netCDF_FOUND)
     find_package(PkgConfig REQUIRED)
 
     pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
