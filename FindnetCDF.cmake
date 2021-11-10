@@ -1,8 +1,5 @@
-# https://gitlab.kitware.com/vtk/vtk/-/blob/master/CMake/FindNetCDF.cmake
-
-# I have had trouble with this version of FindNetCDF for ml2pl on
-# Irene, but, on the other hand, I found this version of FindNetCDF
-# useful for NetCDF95 on Ciclad, taking advantage of pkg-config.
+# Adapted from
+# https://gitlab.kitware.com/vtk/vtk/-/blob/master/CMake/FindnetCDF.cmake
 
 #[==[
 Provides the following variables:
