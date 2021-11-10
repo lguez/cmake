@@ -48,7 +48,7 @@ else()
 	"pkg_netcdf_fortran_includedir: ${pkg_netcdf_fortran_includedir}")
     endif()
 
-    target_link_libraries(PkgConfig::netcdff INTERFACE NetCDF::NetCDF)
+    target_link_libraries(PkgConfig::netcdff INTERFACE netCDF::netcdf)
     add_library(NetCDF_Fortran::netcdff ALIAS PkgConfig::netcdff)
     set(NetCDF_Fortran_FOUND True)
   else()
