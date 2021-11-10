@@ -3,7 +3,7 @@ list(APPEND CMAKE_MESSAGE_CONTEXT FindNetCDF_Fortran)
 if(TARGET NetCDF_Fortran::netcdff)
   set(NetCDF_Fortran_FOUND True)
 else()
-  # Find NetCDF dependency: 
+  # Find NetCDF dependency:
 
   option(use_find_netcdf_module "Use the find module for NetCDF")
 
