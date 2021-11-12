@@ -5,22 +5,25 @@ if(TARGET NetCDF_Fortran::netcdff)
 else()
   # Find NetCDF dependency:
 
-  option(use_find_netcdf_module "Use the find module for NetCDF")
-
-  unset(extraArgs)
+  option(use_find_netcdf_module
+    "Use directly the find module for NetCDF")
 
   if(${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
-    list(APPEND extraArgs QUIET)
+    set(maybe_quiet QUIET)
   endif()
   
   if(${CMAKE_FIND_PACKAGE_NAME}_FIND_REQUIRED)
-    list(APPEND extraArgs REQUIRED)
+    set(maybe_required REQUIRED)
   endif()
   
   if(use_find_netcdf_module)
-    find_package(netCDF ${extraArgs})
+    find_package(netCDF ${maybe_quiet} ${maybe_required})
   else()
-    find_package(netCDF CONFIG ${extraArgs})
+    find_package(netCDF CONFIG ${maybe_quiet})
+
+    if(NOT netCDF_FOUND)
+      find_package(netCDF ${maybe_quiet} ${maybe_required})
+    endif()
   endif()
 
   #-
