@@ -22,7 +22,7 @@ else()
     find_package(netCDF CONFIG ${maybe_quiet})
 
     if(NOT netCDF_FOUND)
-      message("Trying with netCDF module...")
+      message(STATUS "Trying with netCDF module...")
       find_package(netCDF ${maybe_quiet} ${maybe_required})
     endif()
   endif()
