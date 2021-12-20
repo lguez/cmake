@@ -1,2 +1,3 @@
 # cmake
-Find modules, toolchains and TAGS for CMake
+
+Find modules and TAGS for CMake.
