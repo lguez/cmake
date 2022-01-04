@@ -36,7 +36,7 @@ else()
       netcdf-fortran)
 
     pkg_get_variable(netcdf_fortran_pcfiledir netcdf-fortran pcfiledir)
-    message(VERBOSE "Location of .pc file: ${netcdf_fortran_pcfiledir}")
+    message(DEBUG "Location of .pc file: ${netcdf_fortran_pcfiledir}")
 
     message(VERBOSE
       "NetCDF-Fortran include directories: ${netcdff_INCLUDE_DIRS}")
@@ -56,7 +56,7 @@ else()
       target_include_directories(PkgConfig::netcdff INTERFACE
 	${pkg_netcdf_fortran_includedir})
 
-      message(VERBOSE
+      message(DEBUG
 	"pkg_netcdf_fortran_includedir: ${pkg_netcdf_fortran_includedir}")
     endif()
 

@@ -33,7 +33,7 @@ if (PkgConfig_FOUND)
   if (_netCDF_FOUND)
     unset(netCDF_DIR CACHE)
     pkg_get_variable(netcdf_pcfiledir netcdf pcfiledir)
-    message(VERBOSE "Location of .pc file: ${netcdf_pcfiledir}")
+    message(DEBUG "Location of .pc file: ${netcdf_pcfiledir}")
     message(VERBOSE "netCDF include directories: ${_netCDF_INCLUDE_DIRS}")
     message(VERBOSE "netCDF libraries: ${_netCDF_LINK_LIBRARIES}")
     # Forward the variables in a consistent way.
