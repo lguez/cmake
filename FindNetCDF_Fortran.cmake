@@ -38,15 +38,10 @@ else()
     message(VERBOSE "NetCDF-Fortran libraries: ${netcdff_LINK_LIBRARIES}")
     pkg_get_variable(nf_pcfiledir netcdf-fortran pcfiledir)
     message(DEBUG "Location of .pc file: ${nf_pcfiledir}")
+    get_target_property(nf_INTERFACE_INC PkgConfig::netcdff
+      INTERFACE_INCLUDE_DIRECTORIES)
 
-    if(PKG_CONFIG_VERSION_STRING VERSION_LESS "0.29.2"
-	OR PKG_CONFIG_VERSION_STRING VERSION_GREATER "1.1")
-      # pkg-config strips system flags out of cflags. They do not appear
-      # with prefix -isystem when pkg-config is run with
-      # --cflags-only-I. So cmake does not get them. So we have to
-      # duplicate the call to pkg_get_variable that is already in
-      # pkg_check_modules.
-      # Version > 1.1 means we are using pkgconf from pkgconf.org
+    if(NOT nf_INTERFACE_INC)
       pkg_get_variable(pkg_nf_includedir netcdf-fortran includedir)
       message(DEBUG "pkg_nf_includedir: ${pkg_nf_includedir}")
       target_include_directories(PkgConfig::netcdff INTERFACE
