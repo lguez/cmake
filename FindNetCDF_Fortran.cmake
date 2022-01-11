@@ -31,6 +31,7 @@ else()
 
   if(netCDF_FOUND)
     find_package(PkgConfig REQUIRED)
+    message(DEBUG "PKG_CONFIG_EXECUTABLE: ${PKG_CONFIG_EXECUTABLE}")
     pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
       netcdf-fortran)
     pkg_get_variable(netcdf_fortran_pcfiledir netcdf-fortran pcfiledir)
