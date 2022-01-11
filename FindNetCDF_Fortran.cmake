@@ -34,8 +34,7 @@ else()
     message(DEBUG "PKG_CONFIG_EXECUTABLE: ${PKG_CONFIG_EXECUTABLE}")
     pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
       netcdf-fortran)
-    message(VERBOSE
-      "NetCDF-Fortran include directories: ${netcdff_INCLUDE_DIRS}")
+    message(VERBOSE "netcdff_INCLUDE_DIRS: ${netcdff_INCLUDE_DIRS}")
     message(VERBOSE "NetCDF-Fortran libraries: ${netcdff_LINK_LIBRARIES}")
     pkg_get_variable(nf_pcfiledir netcdf-fortran pcfiledir)
     message(DEBUG "Location of .pc file: ${nf_pcfiledir}")
