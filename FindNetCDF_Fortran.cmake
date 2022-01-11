@@ -34,11 +34,11 @@ else()
     message(DEBUG "PKG_CONFIG_EXECUTABLE: ${PKG_CONFIG_EXECUTABLE}")
     pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
       netcdf-fortran)
-    pkg_get_variable(nf_pcfiledir netcdf-fortran pcfiledir)
-    message(DEBUG "Location of .pc file: ${nf_pcfiledir}")
     message(VERBOSE
       "NetCDF-Fortran include directories: ${netcdff_INCLUDE_DIRS}")
     message(VERBOSE "NetCDF-Fortran libraries: ${netcdff_LINK_LIBRARIES}")
+    pkg_get_variable(nf_pcfiledir netcdf-fortran pcfiledir)
+    message(DEBUG "Location of .pc file: ${nf_pcfiledir}")
 
     if(PKG_CONFIG_VERSION_STRING VERSION_LESS "0.29.2"
 	OR PKG_CONFIG_VERSION_STRING VERSION_GREATER "1.1")
@@ -49,9 +49,9 @@ else()
       # pkg_check_modules.
       # Version > 1.1 means we are using pkgconf from pkgconf.org
       pkg_get_variable(pkg_nf_includedir netcdf-fortran includedir)
+      message(DEBUG "pkg_nf_includedir: ${pkg_nf_includedir}")
       target_include_directories(PkgConfig::netcdff INTERFACE
 	${pkg_nf_includedir})
-      message(DEBUG "pkg_nf_includedir: ${pkg_nf_includedir}")
     endif()
 
     target_link_libraries(PkgConfig::netcdff INTERFACE netCDF::netcdf)
