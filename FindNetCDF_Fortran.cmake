@@ -9,10 +9,10 @@ if(NOT TARGET NetCDF_Fortran::netcdff)
   message(VERBOSE "NetCDF-Fortran libraries: ${netcdff_LINK_LIBRARIES}")
   pkg_get_variable(nf_pcfiledir netcdf-fortran pcfiledir)
   message(DEBUG "Location of .pc file: ${nf_pcfiledir}")
-    pkg_get_variable(pkg_nf_includedir netcdf-fortran includedir)
-    message(VERBOSE "pkg_nf_includedir: ${pkg_nf_includedir}")
-    target_include_directories(PkgConfig::netcdff INTERFACE
-      ${pkg_nf_includedir})
+  pkg_get_variable(pkg_nf_includedir netcdf-fortran includedir)
+  message(VERBOSE "pkg_nf_includedir: ${pkg_nf_includedir}")
+  target_include_directories(PkgConfig::netcdff INTERFACE
+    ${pkg_nf_includedir})
   add_library(NetCDF_Fortran::netcdff ALIAS PkgConfig::netcdff)
 endif()
 
