@@ -1,8 +1,6 @@
 list(APPEND CMAKE_MESSAGE_CONTEXT FindNetCDF_Fortran)
 
-if(TARGET NetCDF_Fortran::netcdff)
-  set(NetCDF_Fortran_FOUND True)
-else()
+if(NOT TARGET NetCDF_Fortran::netcdff)
   find_package(PkgConfig REQUIRED)
   message(DEBUG "PKG_CONFIG_EXECUTABLE: ${PKG_CONFIG_EXECUTABLE}")
   pkg_check_modules(netcdff REQUIRED IMPORTED_TARGET GLOBAL
@@ -26,7 +24,7 @@ else()
   endif()
 
   add_library(NetCDF_Fortran::netcdff ALIAS PkgConfig::netcdff)
-  set(NetCDF_Fortran_FOUND True)
 endif()
 
+set(NetCDF_Fortran_FOUND True)
 list(POP_BACK CMAKE_MESSAGE_CONTEXT)
