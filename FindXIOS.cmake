@@ -1,5 +1,9 @@
 list(APPEND CMAKE_MESSAGE_CONTEXT FindXIOS)
 
+if (NOT TARGET netCDF::netcdf)
+  find_package(netCDF REQUIRED)
+endif()
+
 find_path(XIOS_INCLUDE_DIR xios.mod)
 find_library(XIOS_LIBRARY xios)
 include(FindPackageHandleStandardArgs)
@@ -12,7 +16,7 @@ if (XIOS_FOUND)
     ${XIOS_LIBRARY} IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
   target_include_directories(XIOS::xios INTERFACE ${XIOS_INCLUDE_DIR})
   target_link_libraries(XIOS::xios INTERFACE MPI::MPI_CXX
-    NetCDF_Fortran::netcdff)
+    NetCDF_Fortran::netcdff netCDF::netcdf)
 endif()
 
 list(POP_BACK CMAKE_MESSAGE_CONTEXT)
