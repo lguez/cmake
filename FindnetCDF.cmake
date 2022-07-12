@@ -17,8 +17,10 @@ list(APPEND CMAKE_MESSAGE_CONTEXT FindnetCDF)
 function(FindnetCDF_get_is_parallel_aware include_dir)
   file(STRINGS "${include_dir}/netcdf_meta.h" _netcdf_lines
     REGEX "#define[ \t]+NC_HAS_PARALLEL[ \t]")
+  # (netcdf_meta.h exists since version 4.3.3-rc2)
   string(REGEX REPLACE ".*NC_HAS_PARALLEL[ \t]*([0-1]+).*" "\\1"
     _netcdf_has_parallel "${_netcdf_lines}")
+
   if (_netcdf_has_parallel)
     set(netCDF_HAS_PARALLEL TRUE PARENT_SCOPE)
   else()
@@ -30,6 +32,7 @@ find_package(PkgConfig QUIET)
 
 if (PkgConfig_FOUND)
   pkg_check_modules(_netCDF QUIET netcdf IMPORTED_TARGET)
+
   if (_netCDF_FOUND)
     unset(netCDF_DIR CACHE)
     pkg_get_variable(netcdf_pcfiledir netcdf pcfiledir)
@@ -45,11 +48,11 @@ if (PkgConfig_FOUND)
     include(FindPackageHandleStandardArgs)
     find_package_handle_standard_args(netCDF
       REQUIRED_VARS netCDF_LIBRARIES
-      # This is not required because system-default include paths
-      # are not reported by `FindPkgConfig`, so this might be
-      # empty. Assume that if we have a library, the include
+      # netCDF_INCLUDE_DIRS is not required because system-default
+      # include paths are not reported by `FindPkgConfig`, so this
+      # might be empty. Assume that if we have a library, the include
       # directories are fine (if any) since PkgConfig reported that
-      # the package was found.  netCDF_INCLUDE_DIRS
+      # the package was found.
       VERSION_VAR netCDF_VERSION)
 
     if (NOT TARGET netCDF::netcdf)
