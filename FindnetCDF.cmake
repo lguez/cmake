@@ -45,11 +45,11 @@ if (PkgConfig_FOUND)
     include(FindPackageHandleStandardArgs)
     find_package_handle_standard_args(netCDF
       REQUIRED_VARS netCDF_LIBRARIES
-      # This is not required because system-default include paths
-      # are not reported by `FindPkgConfig`, so this might be
-      # empty. Assume that if we have a library, the include
+      # netCDF_INCLUDE_DIRS is not required because system-default
+      # include paths are not reported by `FindPkgConfig`, so this
+      # might be empty. Assume that if we have a library, the include
       # directories are fine (if any) since PkgConfig reported that
-      # the package was found.  netCDF_INCLUDE_DIRS
+      # the package was found.
       VERSION_VAR netCDF_VERSION)
 
     if (NOT TARGET netCDF::netcdf)
